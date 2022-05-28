@@ -10,6 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+/**
+ * Class to Launch App
+ *
+ * @author Nicole Gottschall
+ * @since 2022-05-28
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     /**
@@ -21,26 +28,28 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton addBtn;
     private TextView tf;
 
+    /**
+     * Initialization Method
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listView = (ListView) findViewById(R.id.lv);
-        list = new ArrayList<>();
-
+        //Initialize ListView and ArrayList
+        list = new ArrayList<String>(); //content of List
+        listView = (ListView) findViewById(R.id.lv); //layout of List
+        //Set Adapter
         Adapter adapter = new Adapter(this, list);
         listView.setAdapter(adapter);
 
-        /**
-         * Get needed views
-         */
+        //Get needed views
         addBtn = (ImageButton) findViewById(R.id.addBtn);
         tf = (TextView) findViewById(R.id.tfInput);
 
-        /**
-         * OnButtonClicks
-         */
+        //OnButtonClickEvent to add
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,7 +62,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Getter
+     * Getter ArrayList<String>
+     *
+     * @return ArrayList<String> - List
      */
     public static ArrayList<String> getList() {
         return list;

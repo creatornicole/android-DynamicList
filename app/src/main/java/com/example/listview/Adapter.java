@@ -17,35 +17,58 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Custom Adapter for customized design of ListView-Items
+ *
+ * @author Nicole Gottschall
+ * @since 2022-05-28
+ */
+
 public class Adapter extends ArrayAdapter<String> {
 
-        private Context mContext;
-        private List<String> stringList = new ArrayList<>();
+     /**
+     * Attributes
+     */
+     private Context mContext;
+     private List<String> stringList = new ArrayList<>();
 
-        public Adapter(@NonNull Context context, @LayoutRes ArrayList<String> list) {
+    /**
+     * Constructor of Adapter
+     *
+     * @param context
+     * @param list
+     */
+    public Adapter(@NonNull Context context, @LayoutRes ArrayList<String> list) {
             super(context, 0 , list);
             mContext = context;
             stringList = list;
-        }
+    }
 
-        @NonNull
-        @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            View listItem = convertView;
-            if(listItem == null)
-                listItem = LayoutInflater.from(mContext).inflate(R.layout.list_item,parent,false);
+    /**
+     * getView() is called when a ListItem needs to be created and populated with data.
+     *
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        View listItem = convertView;
+        if(listItem == null)
+            listItem = LayoutInflater.from(mContext).inflate(R.layout.list_item,parent,false);
 
-            String current = stringList.get(position);
+        //get clicked Item
+        String current = stringList.get(position);
+        //get Elements of ListItem
+        TextView text = (TextView) listItem.findViewById(R.id.text);
+        ImageButton btn = (ImageButton) listItem.findViewById(R.id.btn);
+        //get Element from ArrayList
+        ArrayList<String> list = MainActivity.getList();
+        //show clicked Item in ListView
+        text.setText(list.get(position));
 
-
-            TextView text = (TextView) listItem.findViewById(R.id.text);
-            //get Element from ArrayList
-            ArrayList<String> list = MainActivity.getList();
-            text.setText(list.get(position));
-
-            ImageButton btn = (ImageButton) listItem.findViewById(R.id.btn);
-
-
-            return listItem;
-        }
+        return listItem;
+    }
 }
