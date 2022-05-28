@@ -4,7 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/___/studium/IF21wS1-B/androidDev/studio-ListView/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/___/studium/IF21wS1-B/androidDev/studio-ListView/app/src/main/res/layout/list_item.xml" value="0.17806484295845998" />
+        <entry key="..\:/___/studium/IF21wS1-B/androidDev/studio-ListView/app/src/main/res/layout/list_item.xml" value="0.5" />
+        <entry key="..\:/___/studium/IF21wS1-B/androidDev/studio-ListView/app/src/main/res/layout/list_view_items.xml" value="0.10914855072463768" />
       </map>
     </option>
   </component>
