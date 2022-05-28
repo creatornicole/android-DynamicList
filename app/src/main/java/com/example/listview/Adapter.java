@@ -59,16 +59,31 @@ public class Adapter extends ArrayAdapter<String> {
         if(listItem == null)
             listItem = LayoutInflater.from(mContext).inflate(R.layout.list_item,parent,false);
 
-        //get clicked Item
-        String current = stringList.get(position);
         //get Elements of ListItem
         TextView text = (TextView) listItem.findViewById(R.id.text);
-        ImageButton btn = (ImageButton) listItem.findViewById(R.id.btn);
+        ImageButton delBtn = (ImageButton) listItem.findViewById(R.id.delBtn);
+
+        //get clicked Item
+        String current = stringList.get(position);
         //get Element from ArrayList
         ArrayList<String> list = MainActivity.getList();
         //show clicked Item in ListView
         text.setText(list.get(position));
 
+        //OnButtonClickEvent to delete
+        delBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //remove element
+                int index = list.indexOf(current);
+                list.remove(index);
+                //update ListView
+                MainActivity.getListView().invalidateViews();
+            }
+
+        });
         return listItem;
     }
+
+
 }

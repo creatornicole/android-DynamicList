@@ -1,5 +1,6 @@
 package com.example.listview;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -24,9 +25,10 @@ public class MainActivity extends AppCompatActivity {
      * Attributes
      */
     private static ArrayList<String> list;
-    private ListView listView;
-    private Adapter adapter;
+    private static ListView listView;
+    private static Adapter adapter;
     private ImageButton addBtn;
+    private ImageButton delBtn;
     private TextView tf;
 
     /**
@@ -50,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         addBtn = (ImageButton) findViewById(R.id.addBtn);
         tf = (TextView) findViewById(R.id.tfInput);
 
-        //OnButtonClickEvent to add
+        //OnButtonClickEvent to add and delete
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,5 +72,13 @@ public class MainActivity extends AppCompatActivity {
      */
     public static ArrayList<String> getList() {
         return list;
+    }
+
+    public static Adapter getAdapter() {
+        return adapter;
+    }
+
+    public static ListView getListView() {
+        return listView;
     }
 }
