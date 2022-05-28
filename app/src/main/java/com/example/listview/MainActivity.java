@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Class to Launch App
@@ -53,10 +54,11 @@ public class MainActivity extends AppCompatActivity {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String sequence = tf.getText().toString();
-                list.add(sequence);
-                adapter.notifyDataSetChanged();
-                tf.setText("");
+                String sequence = tf.getText().toString(); //get input
+                list.add(sequence); //add input to ArrayList
+                Collections.reverse(list); //reverse order of ArrayList
+                adapter.notifyDataSetChanged();  //update view
+                tf.setText(""); //clear input field
             }
         });
     }
