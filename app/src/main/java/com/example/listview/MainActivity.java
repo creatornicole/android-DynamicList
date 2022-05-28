@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.regex.Pattern;
 
 /**
  * Class to Launch App
@@ -52,15 +53,19 @@ public class MainActivity extends AppCompatActivity {
         addBtn = (ImageButton) findViewById(R.id.addBtn);
         tf = (TextView) findViewById(R.id.tfInput);
 
-        //OnButtonClickEvent to add and delete
+        //OnButtonClickEvent to add
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String sequence = tf.getText().toString(); //get input
-                list.add(sequence); //add input to ArrayList
-                Collections.reverse(list); //reverse order of ArrayList
-                adapter.notifyDataSetChanged();  //update view
-                tf.setText(""); //clear input field
+                if(Pattern.matches("s*", sequence)) {
+                    //ignore input if it is empty
+                } else {
+                    list.add(sequence); //add input to ArrayList
+                    Collections.reverse(list); //reverse order of ArrayList
+                    adapter.notifyDataSetChanged();  //update view
+                    tf.setText(""); //clear input field
+                }
             }
         });
     }
